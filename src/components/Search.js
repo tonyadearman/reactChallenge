@@ -17,7 +17,10 @@ const Search = () => {
         const response = await axios.get(`http://api.tvmaze.com/search/shows?q=${searchValue}`)
         const moviesData = response.data.map(movie => movie.show);
         console.log(moviesData);
-        setTVShows(moviesData);
+        const results = moviesData.sort((a, b) => a.name.localeCompare(b.name));
+
+        setTVShows(results);
+
 
     }
 
